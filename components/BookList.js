@@ -1,28 +1,47 @@
 import React, { Component } from 'react';
-import { ImageBackground, StyleSheet, View, ListView } from 'react-native';
-import BookCard from './BookCard.js';
+import {  ListView,Image } from 'react-native';
+import { ImageBackground, StyleSheet, View, Container, Header, Content, List, ListItem, Text ,Card, CardItem, Body} from 'native-base';
 
 
+// import BookCard from './BookCard.js';
+import {observer} from 'mobx-react'
 
 
-export default class BookList extends Component {
+export default observer (class BookList extends Component {
 
-    constructor(props) {
-        super(props);
-    }
+    
 
   render() {
-    console.log(this.props.bookStore);
-
-    let bookCards = this.props.bookStore.books.map( book=> <BookCard book={book}/>)
-
+    const books = this.props.bookStore.books.slice();
     return (
-        <View>
-        {bookCards}
-        </View>
+
+        <Content>
+          <List dataArray={books}
+            renderRow={(item) =>
+              <ListItem>
+                  <Card>
+                    <CardItem header>
+                      <Text>{item.name}</Text>
+                    </CardItem>
+                    <CardItem cardBody>
+                      <Image source={{uri: item.cover}} style={{height: 300, width: null, flex: 1}}/>
+                    </CardItem>
+                    <CardItem>
+                      <Body>
+                        <Text>
+                          {item.description}
+                        </Text>
+                      </Body>
+                    </CardItem>
+                 </Card>
+              </ListItem>
+            }>
+          </List>
+        </Content>
     );
   }
 }
+)
 
 
   

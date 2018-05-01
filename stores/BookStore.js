@@ -13,13 +13,13 @@ class BookStore{
 			name: 'Eat Pray Love',
 			description: 'bla bla bla',
 			author: 'Someone',
-			cover: 'eatpraylove.png',
+			cover: 'https://www.sheridanmedia.com/files/imagecache/250px/image/Cover.EatPrayLove.jpg',
 		},
 		{
 			name: 'Eat Pray Love',
 			description: 'bla bla bla',
 			author: 'Someone',
-			cover: 'eatpraylove.png',
+			cover: 'https://www.sheridanmedia.com/files/imagecache/250px/image/Cover.EatPrayLove.jpg',
 		}
 		],
             loader:true,

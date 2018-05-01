@@ -1,16 +1,31 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Header from './components/Header.js';
 import BookList from './components/BookList.js';
 import bookStore from './stores/BookStore.js';
+import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
+
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-
+      <Container>
+        <Header>
+          <Left>
+            <Button transparent>
+              <Icon name='arrow-back' />
+            </Button>
+          </Left>
+          <Body>
+            <Title>ArabEyes</Title>
+          </Body>
+          <Right>
+            <Button transparent>
+              <Icon name='menu' />
+            </Button>
+          </Right>
+        </Header>
         <BookList bookStore={bookStore} />
-      </View>
+      </Container>
     );
   }
 }
