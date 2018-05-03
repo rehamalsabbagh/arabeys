@@ -14,8 +14,8 @@ export default observer (class BookList extends Component {
   render() {
     const books = this.props.bookStore.books.slice();
 
-
     return (
+
         <Container>
         <MyHeader/>
         <Container style={{padding:15}}>
@@ -33,15 +33,15 @@ export default observer (class BookList extends Component {
 
                   <Card style={{marginBottom:15}}>
                     <CardItem header>
-                      <Text style={{textAlign: 'right'}}>{item.name}</Text>
+                      <Text style={{textAlign: 'right'}}>{item.book_name}</Text>
                     </CardItem>
                     <CardItem cardBody>
-                      <Image source={{uri: item.cover}} style={{height: 300, width: null, flex: 1}}/>
+                      <Image source={{uri: item.cover_image}} style={{height: 300, width: null, flex: 1}}/>
                     </CardItem>
                     <CardItem>
                       <Body>
                         <Text style={{textAlign: 'right'}}>
-                          {item.description}
+                          {item.book_description}
                         </Text>
                       </Body>
                     </CardItem>

@@ -27,20 +27,19 @@ class BookStore{
     }
 
 	fetchBooks(){
-		// RAKAN's CODE, DON'T MESS WITH IT !!!!!!
-		// return axios.get('https:ifteraaad/'){
-		// 	.then(res => res.data)
-		// 	.then(books => {
-		// 		this.books = books;
-		// 		this.loading = false;
-		// 	})
-		// 	.catch(err => console.error(err));
-		// }
+		return axios.get('http://138.197.187.34/api/list/')
+			.then(res => res.data)
+			.then(books => {
+				this.books = books;
+				this.loading = false;
+			})
+			.catch(err => console.error(err));
+		}
 
 	}
 
-}
+
 
 const bookStore = new BookStore()
-
+bookStore.fetchBooks();
 export default bookStore;

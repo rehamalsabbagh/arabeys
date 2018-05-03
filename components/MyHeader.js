@@ -16,7 +16,7 @@ export default class MyHeader extends React.Component {
             </Button>
           </Left>
           <Body>
-            <Title style={{color:'white'}}>عيون عربية</Title>
+            <Title style={{color:'white'}}>جلجامش</Title>
           </Body>
           <Right>
             <Button transparent>
