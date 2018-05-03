@@ -10,14 +10,14 @@ class BookStore{
         extendObservable(this, {
             books: [
 		{
-			name: 'Eat Pray Love',
-			description: 'bla bla bla',
+			name: 'طعام، صلاة، حب',
+			description: '.....',
 			author: 'Someone',
 			cover: 'https://www.sheridanmedia.com/files/imagecache/250px/image/Cover.EatPrayLove.jpg',
 		},
 		{
-			name: 'Eat Pray Love',
-			description: 'bla bla bla',
+			name: 'طعام، صلاة، حب',
+			description: '.....',
 			author: 'Someone',
 			cover: 'https://www.sheridanmedia.com/files/imagecache/250px/image/Cover.EatPrayLove.jpg',
 		}
