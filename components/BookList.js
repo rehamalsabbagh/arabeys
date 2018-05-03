@@ -9,7 +9,7 @@ import {observer} from 'mobx-react'
 
 export default observer (class BookList extends Component {
 
-    
+
 
   render() {
     const books = this.props.bookStore.books.slice();
@@ -19,6 +19,7 @@ export default observer (class BookList extends Component {
           <List dataArray={books}
             renderRow={(item) =>
               <ListItem>
+                {/* Aziz: Make this its own component */}
                   <Card>
                     <CardItem header>
                       <Text>{item.name}</Text>
@@ -42,7 +43,3 @@ export default observer (class BookList extends Component {
   }
 }
 )
-
-
-  
-  
