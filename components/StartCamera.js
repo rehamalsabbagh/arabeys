@@ -15,86 +15,41 @@ export default class CameraExample extends React.Component {
   async componentWillMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
     this.setState({ hasCameraPermission: status === 'granted' }); 
+
   }
+
     componentDidMount() {
-    Expo.FileSystem.makeDirectoryAsync(Expo.FileSystem.documentDirectory + 'myphotos').catch(e => {
-      console.log(e, 'Directory exists');
-    });
+      this.props.bookStore.clearPages();
   }
+
+
+  resizeImage(uri){
+        ImageManipulator.manipulate(
+        uri,
+        [{ compress: 0},{ resize: { height: 900 }}],
+        { format: 'png', base64: true},
+      ).then((data)=>{
+        //console.log(data);
+        let base64 = data['base64'];
+        this.props.bookStore.addPage(base64);
+    }).catch((err)=>{
+      console.log('it was not resized');
+      return err;
+    })
+  }
+
 
 
   takePicture() {
     if (this.camera) {
-      this.camera.takePictureAsync().then(data => {
-        Expo.FileSystem.moveAsync({
-          from: data.uri,
-          to: `${Expo.FileSystem.documentDirectory}myphotos/Photo_${this.state.photoId}.jpg`,
-        }).then((dataa) => {
-          console.log('????');
-          console.log(dataa);
-          this.setState({
-            // photoId: this.state.photoId + 1,
-          });
-          //Vibration.vibrate();
-        });
+        let photo = this.camera.takePictureAsync({base64:true});
+        photo.then((data)=>{
+        this.resizeImage(data['uri']);
       });
-    }
-  };
-
-  // takePicture() {
-  //   if (this.camera) {
-  //     let photo = this.camera.takePictureAsync();
-  //     console.log(photo);
-  //     photo.then((data)=>{
-  //       console.log('*******');
-  //       console.log(data);
-  //       my_uri = data['uri'];
-  //       console.log(my_uri);
-  //       //resizeImage(my_uri);
-
-  //       let manipResult = ImageManipulator.manipulate(
-  //           my_uri,
-  //           [],
-  //           {
-  //               compress: 0.75,
-  //               format: 'jpeg'
-  //           }
-  //       );
-  //       manipResult.then((data) => {
-  //       console.log('__*_*_*_*_*_--');
-  //       console.log(data);
-  //       const time = new Date().getTime();
-  //       const uriParts = my_uri.split('.');
-  //       //const uriParts = manipResult.my_uri.split('.');
-  //       const fileType = uriParts[uriParts.length - 1];
-  //       const userID = 'abc';
-  //       const image = `${Expo.FileSystem.documentDirectory}${userID}/${time}.${fileType}`;
-        
-  //       alert('Trying to copy image');
-        
-  //       Expo.FileSystem.copyAsync({
-  //           from: my_uri,
-  //           to: image
-  //       }).then((data1) => {
-  //           console.log('-----here-----')
-  //           console.log(data1)
-  //       }).catch((error) => {
-  //           console.log('**here**')
-  //           console.log(JSON.stringify(error));
-  //       });
-  //       });
-
-  //     });
-      
-  //   }
-  // }
-
-
-
-  resizeImage(uri){
-
       
     }
+  }
+
 
   render() {
     const { hasCameraPermission } = this.state;
@@ -106,22 +61,29 @@ export default class CameraExample extends React.Component {
       return (
         <View style={{ flex: 1 }}>
           <Camera style={{ flex: 1 }} type={this.state.type}  ref={ref => { this.camera = ref; }} >
-            <Button transparent style={{textAlign: 'left', marginTop:15}}>
+            <Button transparent style={{marginTop:15}}>
             <Link to='/'>
               <Icon name='arrow-back' style={{color:'white'}} />
             </Link>
             </Button>
-            <View
+
+            <Button transparent style={{marginTop:15}}>
+            <Link to='/addbook/'>
+              <Icon name='ios-checkmark-circle-outline' style={{color:'white'}} />
+            </Link>
+            </Button>
+            <View full
               style={{
                 flex: 1,
                 backgroundColor: 'transparent',
                 flexDirection: 'row',
               }}>
-              <TouchableOpacity
+              <TouchableOpacity full
                 style={{
                   flex: 0.1,
                   alignSelf: 'flex-end',
                   alignItems: 'center',
+                  
                 }}
                 onPress={() => {
                   this.setState({
@@ -131,11 +93,11 @@ export default class CameraExample extends React.Component {
                   });
                 }}>
                 <Text onPress={()=>this.takePicture()}
-                  style={{ fontSize: 18, marginBottom: 10, color: 'white' }}>
+                  style={{fontSize: 30, marginBottom: 10, color: 'white' }}>
                   {' '}<Icon name='ios-camera-outline' style={{color:'white'}}/>{' '}
                 </Text>
                 <Text
-                  style={{ fontSize: 18, marginBottom: 10, color: 'white' }}>
+                  style={{ fontSize: 30, marginBottom: 10, color: 'white' }}>
                   {' '}<Icon name='ios-reverse-camera-outline' style={{color:'white'}}/>{' '}
                 </Text>
               </TouchableOpacity>

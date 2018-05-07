@@ -5,6 +5,7 @@ import bookStore from '../stores/BookStore.js';
 import { Container, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 import StartCamera from './StartCamera.js';
 import MyHeader from './MyHeader.js';
+import AddBookForm from './AddBookForm.js';
 import { NativeRouter, Route, Link, Switch, withRouter } from 'react-router-native'
 
 export default class MyApp extends React.Component {
@@ -12,7 +13,12 @@ export default class MyApp extends React.Component {
     return (
       <Container>
          <Switch>
-          <Route exact path='/scan/' component={StartCamera} />
+          <Route exact path='/scan/'
+                 render= { props => <StartCamera {...props} bookStore={bookStore}/> }
+                 />
+          <Route exact path='/addbook/'
+                 render= { props => <AddBookForm {...props} bookStore={bookStore}/> }
+                 />
           <Route path="/" 
                  render= { props => <BookList {...props} bookStore={bookStore}/> }
                  />
@@ -21,6 +27,7 @@ export default class MyApp extends React.Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
