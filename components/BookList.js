@@ -39,7 +39,7 @@ export default observer (class BookList extends Component {
         </View>
           <List dataArray={books}
             renderRow={(item) =>
-
+                  // Aziz: consider extracting this into a seperate component
                   <Card style={{marginBottom:15}}>
                     <CardItem header >
                       <Text >{item.book_name}</Text>
@@ -64,7 +64,3 @@ export default observer (class BookList extends Component {
   }
 }
 )
-
-
-  
-  
