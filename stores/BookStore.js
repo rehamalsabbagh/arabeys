@@ -65,6 +65,9 @@ class BookStore{
 	      })
 	      .catch(err => console.error('there is an error in the create page api: '+err));
 
+
+    // Aziz: Try to avoid committing dead code
+
 		//   let apiUrl = 'http://192.168.100.172/api/page_create/';
 
 		//   // Note:
@@ -124,4 +127,3 @@ class BookStore{
 const bookStore = new BookStore()
 bookStore.fetchBooks();
 export default bookStore;
-
