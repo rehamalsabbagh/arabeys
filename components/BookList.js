@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {  ListView,Image } from 'react-native';
 import { ImageBackground, StyleSheet, View, Container, Header, Content, List, ListItem, Text ,Card, CardItem, Body, Button,Icon} from 'native-base';
 import StartCamera from './StartCamera.js';
-import {observer} from 'mobx-react'
+import {observer} from 'mobx-react';
 import { NativeRouter, Route, Link, Switch, withRouter } from 'react-router-native';
 import MyHeader from './MyHeader.js';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -30,6 +30,7 @@ export default observer (class BookList extends Component {
         <Container style={{padding:15}}>
         <View style={{marginBottom:15}}>
         <Icon name='book' style={{textAlign: 'center'}}/>
+        <Text style={{textAlign: 'center'}}>مرحبا {this.props.userStore.username}!</Text>
         <Text style={{textAlign: 'center', paddingBottom:15}}>ما الذي تقرأه؟</Text>
           <Button full info bordered rounded style={{borderRadius:5}}>
             <Link to='/scan/'>
@@ -39,7 +40,7 @@ export default observer (class BookList extends Component {
         </View>
           <List dataArray={books}
             renderRow={(item) =>
-
+                <Link to={'/pages/'+item.id}>
                   <Card style={{marginBottom:15}}>
                     <CardItem header >
                       <Text >{item.book_name}</Text>
@@ -55,6 +56,7 @@ export default observer (class BookList extends Component {
                       </Body>
                     </CardItem>
                  </Card>
+               </Link>
             }>
           </List>
 

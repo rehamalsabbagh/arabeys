@@ -20,7 +20,9 @@ export default class MyHeader extends React.Component {
           </Body>
           <Right>
             <Button transparent>
-              <Icon name='menu' style={{color:'white'}}/>
+              <Link to='/menu/'>
+                <Icon name='menu' style={{color:'white'}}/>
+              </Link>
             </Button>
           </Right>
         </Header>

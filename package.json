@@ -21,6 +21,7 @@
   "dependencies": {
     "expo": "^27.0.1",
     "global": "^4.3.2",
+    "jwt-decode": "^2.2.0",
     "mobx": "^4.2.0",
     "mobx-react": "^5.1.2",
     "native-base": "^2.4.3",
