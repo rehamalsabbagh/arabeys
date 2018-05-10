@@ -21,30 +21,17 @@ export default observer (class BookList extends Component {
   }
 
   render() {
-    const books = this.props.bookStore.books.slice();
+    const books = this.props.bookStore.getBooksForUser(this.props.userStore.username).slice();
 
     return (
 
         <Container>
         <MyHeader/>
         <Container style={{padding:15}}>
-        <View style={{marginBottom:15}}>
-        <Icon name='book' style={{textAlign: 'center'}}/>
-        <Text style={{textAlign: 'center'}}>مرحبا {this.props.userStore.username}!</Text>
-        <Text style={{textAlign: 'center', paddingBottom:15}}>ما الذي تقرأه؟</Text>
-          <Button full info bordered rounded style={{borderRadius:5}}>
-            <Link to='/scan/'>
-                <Text>أضف كتابا</Text>
-            </Link>
-        </Button>
-        </View>
           <List dataArray={books}
             renderRow={(item) =>
                 <Link to={'/pages/'+item.id}>
                   <Card style={{marginBottom:15}}>
-                    <CardItem header >
-                      <Text >{item.user.username}</Text>
-                    </CardItem>
                     <CardItem cardBody>
                       <Image source={{uri: this.checkifImgIsNull(item.cover_image)}} style={{height: 300, width: null, flex: 1}}/>
                     </CardItem>

@@ -23,6 +23,7 @@ class BookStore{
 		return axios.get('http://139.59.208.148/api/list/')
 			.then(res => res.data)
 			.then(books => {
+				console.log(books);
 				this.books = books;
 				this.loading = false;
 			})
@@ -76,7 +77,11 @@ class BookStore{
 				this.loading = false;
 			})
 			.catch(err => console.error(err));
-		} 	
+		}
+
+	getBooksForUser(currentUsername){
+		return this.books.filter(book=> book.user.username == currentUsername);
+	}
     
 }
 

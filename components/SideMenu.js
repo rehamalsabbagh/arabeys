@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Content, List, ListItem, Text } from 'native-base';
 import {observer} from 'mobx-react'
 import MyHeader from './MyHeader.js';
+import { NativeRouter, Route, Link, Switch, withRouter } from 'react-router-native';
 
 
 export default observer (class SideMenu extends Component {
@@ -12,7 +13,9 @@ export default observer (class SideMenu extends Component {
         <Content>
           <List>
             <ListItem>
-              <Text>كتبي</Text>
+            <Link to='/mybooks/'>
+              <Text >كتبي</Text>
+            </Link>
             </ListItem>
             <ListItem>
               <Text>كتب مفضلة</Text>

@@ -12,6 +12,7 @@ import Login from './Login.js';
 import {observer} from 'mobx-react';
 import SideMenu from './SideMenu.js';
 import Registerme from './Registerme.js';
+import UserBooks from './UserBooks.js';
 
 
 import { NativeRouter, Route, Link, Switch, withRouter } from 'react-router-native'
@@ -32,7 +33,7 @@ export default observer(class MyApp extends React.Component {
           </Container>:
          <Switch>
           <Route exact path='/menu/'
-                 render= { props => <SideMenu {...props} userStore={userStore}/> }
+                 render= { props => <SideMenu {...props} userStore={userStore} bookStore={bookStore}/> }
                  />
           <Route exact path='/pages/:bookId'
                  render= { props => <PagesView {...props} bookStore={bookStore}/> }
@@ -42,6 +43,9 @@ export default observer(class MyApp extends React.Component {
                  />
           <Route exact path='/addbook/'
                  render= { props => <AddBookForm {...props} bookStore={bookStore} userStore={userStore}/> }
+                 />
+          <Route exact path='/mybooks/'
+                 render= { props => <UserBooks {...props} bookStore={bookStore} userStore={userStore}/> }
                  />
           <Route path="/" 
                  render= { props => <BookList {...props} bookStore={bookStore} userStore={userStore}/> }
