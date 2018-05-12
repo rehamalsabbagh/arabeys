@@ -11,13 +11,13 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 export default observer (class PagesView extends Component {
 
   componentDidMount() {
-      this.props.bookStore.getPagesOfBook(this.props.match.params.bookId);
+      this.props.bookStore.getPagesOfBook(this.props.bookStore.bookCreatedId);
   }
 
   render() {
     const pages = this.props.bookStore.base64Pages.slice();
-    console.log('**********************************************************************************************');
-    console.log(pages);
+    //console.log('**********************************************************************************************');
+    //console.log(pages);
 
     return (
         <Container>

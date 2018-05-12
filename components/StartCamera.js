@@ -26,7 +26,7 @@ export default class CameraExample extends React.Component {
   resizeImage(uri){
         ImageManipulator.manipulate(
         uri,
-        [{ compress: 0},{ resize: { height: 900 }}],
+        [{ compress: 0},{ resize: { height: 500 }}],
         { format: 'png', base64: true},
       ).then((data)=>{
         //console.log(data);

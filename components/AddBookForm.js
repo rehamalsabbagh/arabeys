@@ -15,7 +15,7 @@ export default observer (class AddBookForm extends Component {
   render() {
     return(
       <Container>
-      {this.props.bookStore.pagesStored? <PagesView/>:
+      {this.props.bookStore.pagesStored? <PagesView bookStore={this.props.bookStore} userStore={this.props.userStore} book_id={this.props.bookStore.bookCreatedId}/>:
           <Container>
             <MyHeader />
             <Content style={{margin:15}}>
@@ -30,7 +30,6 @@ export default observer (class AddBookForm extends Component {
                 <Item last>
                   <Input placeholder="وصف الكتاب" style={{textAlign: 'right'}} onChangeText={(text) => this.setState({ description:text }) } value={this.state.description}/>
                 </Item>
-                
                   <Button full info bordered rounded style={{borderRadius:5,marginTop:15}} onPress={()=>this.props.bookStore.createBook(this.state.name, this.state.description, this.props.userStore.user.user_id)}>
                     <Text>أرسل</Text>
                 </Button>

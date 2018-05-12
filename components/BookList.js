@@ -40,7 +40,7 @@ export default observer (class BookList extends Component {
         </View>
           <List dataArray={books}
             renderRow={(item) =>
-                <Link to={'/pages/'+item.id}>
+                <Link to={'/pages/'+item.id} onPress={()=>this.props.bookStore.bookCreatedId=item.id}>
                   <Card style={{marginBottom:15}}>
                     <CardItem header >
                       <Text >{item.user.username}</Text>

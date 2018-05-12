@@ -7,7 +7,7 @@ import { NativeRouter, Route, Link, Switch, withRouter } from 'react-router-nati
 export default class MyHeader extends React.Component {
   render() {
     return (
-        <Header style={{backgroundColor:'#529ff3'}}>
+        <Header style={{backgroundColor:'transparent'}}>
           <Left>
             <Button transparent>
             <Link to='/'>

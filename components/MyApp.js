@@ -13,7 +13,7 @@ import {observer} from 'mobx-react';
 import SideMenu from './SideMenu.js';
 import Registerme from './Registerme.js';
 import UserBooks from './UserBooks.js';
-
+import Loader from './Loader.js';
 
 import { NativeRouter, Route, Link, Switch, withRouter } from 'react-router-native'
 
@@ -31,6 +31,7 @@ export default observer(class MyApp extends React.Component {
           />
           </Switch>
           </Container>:
+          userStore.loading || bookStore.loading ? <Loader/>:
          <Switch>
           <Route exact path='/menu/'
                  render= { props => <SideMenu {...props} userStore={userStore} bookStore={bookStore}/> }
