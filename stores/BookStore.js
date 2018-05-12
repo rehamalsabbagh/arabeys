@@ -18,6 +18,7 @@ class BookStore{
            	pagesStored: false,
            	pagesProcessed: 0,
            	bookCreatedId:0,
+           	previousPath:''
         })
     }
 
@@ -32,6 +33,7 @@ class BookStore{
 
 	clearPages(){
 		this.base64Pages = [];
+		console.log("pages cleared");
 	}
 
 	addPage(base64){
@@ -82,7 +84,7 @@ class BookStore{
 				this.clearPages();
 				data['pages'].map(page=>this.base64Pages.push(page['base64']));
 				this.loading = false;
-				console.log(this.base64Pages);
+				//console.log(this.base64Pages);
 			})
 			.catch(err => console.error(err));
 		}

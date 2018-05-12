@@ -12,9 +12,11 @@ export default observer (class PagesView extends Component {
 
   componentDidMount() {
       this.props.bookStore.getPagesOfBook(this.props.bookStore.bookCreatedId);
+      this.props.bookStore.previousPath = this.props.location.pathname;
   }
 
   render() {
+
     const pages = this.props.bookStore.base64Pages.slice();
     //console.log('**********************************************************************************************');
     //console.log(pages);
@@ -33,7 +35,11 @@ export default observer (class PagesView extends Component {
                  </Card>
             }>
           </List>
-
+          <Button full light rounded style={{borderRadius:5}}>
+            <Link to='/scan/'>
+                <Text>أضف المزيد من الصفحات</Text>
+            </Link>
+          </Button>
         </Container>
         </Container>
     );

@@ -10,6 +10,12 @@ import CardSilder from 'react-native-cards-slider';
 
 export default class BookList extends Component {
 
+  componentDidMount() {
+    //console.log(this.props.location);
+    //console.log(this.props.location.path);
+      this.props.bookStore.previousPath = this.props.location.pathname;
+  }
+
   checkifImgIsNull(imgUrl){
     if(imgUrl==null){
       return 'https://static1.squarespace.com/static/569e34efdc5cb42cf2dc776d/t/569ec4eadc5cb40e1bc9252e/1453245675100/1453267205_pen_stroke_sketch_doodle_lineart_87.png';
@@ -20,6 +26,7 @@ export default class BookList extends Component {
   }
 
     render () {
+
         const books = this.props.bookStore.books.slice();
 
         return (

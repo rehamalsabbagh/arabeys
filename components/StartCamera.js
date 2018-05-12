@@ -50,6 +50,18 @@ export default class CameraExample extends React.Component {
     }
   }
 
+  determineAction(){
+    console.log('*****')
+    console.log(this.props.bookStore.previousPath)
+    if(this.props.bookStore.previousPath.includes('pages')){
+      //alert('detail');
+      this.props.bookStore.base64Pages.map(base64=>this.props.bookStore.sendPage(this.props.bookStore.bookCreatedId,base64));
+    }
+    else{
+      this.props.history.push('/addbook');
+    }
+  }
+
 
   render() {
     const { hasCameraPermission } = this.state;
@@ -68,19 +80,22 @@ export default class CameraExample extends React.Component {
             </Button>
 
             <Button transparent style={{marginTop:15}}>
-            <Link to='/addbook/'>
+            <Link onPress={this.determineAction.bind(this)}>
               <Icon name='ios-checkmark-circle-outline' style={{color:'white'}} />
             </Link>
             </Button>
-            <View full
+            <Container full
               style={{
                 flex: 1,
                 backgroundColor: 'transparent',
                 flexDirection: 'row',
+                justifyContent:'center',
+                alignItems:'center'
               }}>
               <TouchableOpacity full
                 style={{
                   flex: 0.1,
+                  backgroundColor: 'black',
                   alignSelf: 'flex-end',
                   alignItems: 'center',
                   
@@ -94,14 +109,10 @@ export default class CameraExample extends React.Component {
                 }}>
                 <Text onPress={()=>this.takePicture()}
                   style={{fontSize: 30, marginBottom: 10, color: 'white' }}>
-                  {' '}<Icon name='ios-camera-outline' style={{color:'white'}}/>{' '}
-                </Text>
-                <Text
-                  style={{ fontSize: 30, marginBottom: 10, color: 'white' }}>
-                  {' '}<Icon name='ios-reverse-camera-outline' style={{color:'white'}}/>{' '}
+                  {' '}<Icon name='ios-camera-outline' style={{color:'white',fontSize:30}}/>{' '}
                 </Text>
               </TouchableOpacity>
-            </View>
+            </Container>
           </Camera>
         </View>
       );

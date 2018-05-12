@@ -14,7 +14,6 @@ import SideMenu from './SideMenu.js';
 import Registerme from './Registerme.js';
 import UserBooks from './UserBooks.js';
 import Loader from './Loader.js';
-
 import { NativeRouter, Route, Link, Switch, withRouter } from 'react-router-native'
 
 export default observer(class MyApp extends React.Component {
@@ -32,7 +31,12 @@ export default observer(class MyApp extends React.Component {
           </Switch>
           </Container>:
           userStore.loading || bookStore.loading ? <Loader userStore={userStore} bookStore={bookStore}/>:
-          bookStore.pagesStored? <PagesView bookStore={bookStore} userStore={userStore} book_id={bookStore.bookCreatedId}/>:
+          bookStore.pagesStored?
+          <Switch>
+          <Route path='/'
+                 render= { props => <PagesView {...props} userStore={userStore} bookStore={bookStore} book_id={bookStore.bookCreatedId}/> }
+                 />
+          </Switch>:
          <Switch>
           <Route exact path='/menu/'
                  render= { props => <SideMenu {...props} userStore={userStore} bookStore={bookStore}/> }

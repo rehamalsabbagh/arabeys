@@ -14,14 +14,14 @@ export default observer (class SideMenu extends Component {
           <List>
             <ListItem>
             <Link to='/mybooks/'>
-              <Text style={{textAlign:'right'}}>كتبي</Text>
+              <Text style={{textAlign:'right',alignSelf: 'stretch'}}>كتبي</Text>
             </Link>
             </ListItem>
             <ListItem>
-              <Text style={{textAlign:'right'}}>كتب مفضلة</Text>
+              <Text style={{textAlign:'right',alignSelf: 'stretch'}}>كتب مفضلة</Text>
             </ListItem>
             <ListItem onPress={()=>this.props.userStore.logout()}>
-              <Text style={{textAlign:'right'}}>تسجيل خروج</Text>
+              <Text style={{textAlign:'right',alignSelf: 'stretch'}}>تسجيل خروج</Text>
             </ListItem>
           </List>
         </Content>
