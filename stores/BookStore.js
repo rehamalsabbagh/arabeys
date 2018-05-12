@@ -49,10 +49,19 @@ class BookStore{
 	    .then(res => res.data)
 	      .then((result) => {
 	        console.log('book is created');
-	        this.base64Pages.map(base64=>this.sendPage(result['id'],base64));
+	        this.bookCreatedId = result.id;
+	        this.sendPages(result.id, this.base64Pages);
+	        // this.sendPage(result['id'],base64)
 	        this.fetchBooks();
 	      })
 	      .catch(err => console.error('there is an error in the create book api: '+err));
+    }
+
+    sendPages(book_id, pages) {
+    	if(pages.length) {
+	    	this.sendPage(book_id, pages.shift())
+	    		.then(() => this.sendPages(book_id, pages));
+    	}
     }
 
     sendPage(book_id,base64){
@@ -65,7 +74,7 @@ class BookStore{
 	      .then((result) => {
 	      	this.pagesProcessed++;
 	      	console.log('Sucess');
-	      	if (this.pagesProcessed == this.base64Pages.length){
+	      	if (this.base64Pages.length == 0){
 	      		//this.getPagesOfBook(book_id);
 	      		this.pagesProcessed = 0;
 	      		this.bookCreatedId = book_id;

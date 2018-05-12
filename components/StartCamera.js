@@ -55,7 +55,8 @@ export default class CameraExample extends React.Component {
     console.log(this.props.bookStore.previousPath)
     if(this.props.bookStore.previousPath.includes('pages')){
       //alert('detail');
-      this.props.bookStore.base64Pages.map(base64=>this.props.bookStore.sendPage(this.props.bookStore.bookCreatedId,base64));
+      //this.props.bookStore.base64Pages.map(base64=>this.props.bookStore.sendPage(this.props.bookStore.bookCreatedId,base64));
+      this.props.bookStore.sendPages(this.props.bookStore.bookCreatedId, this.props.bookStore.base64Pages);
     }
     else{
       this.props.history.push('/addbook');
