@@ -9,19 +9,19 @@ export default observer (class SideMenu extends Component {
   render() {
     return (
       <Container>
-        <MyHeader />
+        <MyHeader bookStore={this.props.bookStore}/>
         <Content>
           <List>
             <ListItem>
             <Link to='/mybooks/'>
-              <Text >كتبي</Text>
+              <Text style={{textAlign:'right'}}>كتبي</Text>
             </Link>
             </ListItem>
             <ListItem>
-              <Text>كتب مفضلة</Text>
+              <Text style={{textAlign:'right'}}>كتب مفضلة</Text>
             </ListItem>
             <ListItem onPress={()=>this.props.userStore.logout()}>
-              <Text>تسجيل خروج</Text>
+              <Text style={{textAlign:'right'}}>تسجيل خروج</Text>
             </ListItem>
           </List>
         </Content>

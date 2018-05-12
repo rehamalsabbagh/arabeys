@@ -7,10 +7,10 @@ import { NativeRouter, Route, Link, Switch, withRouter } from 'react-router-nati
 export default class MyHeader extends React.Component {
   render() {
     return (
-        <Header style={{backgroundColor:'transparent'}}>
+        <Header style={{backgroundColor:'transparent',shadowColor:'#000',shadowOffset:{ width: 0, height: 1 },shadowOpacity: 0.5,shadowRadius: 2}}>
           <Left>
             <Button transparent>
-            <Link to='/'>
+            <Link to='/' onPress={()=>this.props.bookStore.pagesStored=false}>
               <Icon name='arrow-back' style={{color:'white'}}/>
             </Link>
             </Button>
@@ -29,4 +29,3 @@ export default class MyHeader extends React.Component {
     );
   }
 }
-

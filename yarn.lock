@@ -5678,6 +5678,10 @@ react-native-branch@2.0.0-beta.3:
     lodash "^4.17.4"
     prop-types "^15.5.10"
 
+react-native-cards-slider@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-cards-slider/-/react-native-cards-slider-0.1.2.tgz#213489c48064929a7e76ac0e9352cb60a59bfd03"
+
 react-native-drawer@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-native-drawer/-/react-native-drawer-2.5.0.tgz#022cba5c0516126a9fc9cce3185cb46c644b51c4"
@@ -5714,6 +5718,12 @@ react-native-git-upgrade@^0.2.7:
     semver "^5.0.3"
     shelljs "^0.7.5"
     yeoman-environment "1.5.3"
+
+react-native-grid-list@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-native-grid-list/-/react-native-grid-list-1.0.8.tgz#e29ad9435080ac901576771aa4d7966db01233c2"
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-iphone-x-helper@^1.0.1:
   version "1.0.2"

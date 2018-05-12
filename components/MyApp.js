@@ -31,7 +31,8 @@ export default observer(class MyApp extends React.Component {
           />
           </Switch>
           </Container>:
-          userStore.loading || bookStore.loading ? <Loader/>:
+          userStore.loading || bookStore.loading ? <Loader userStore={userStore} bookStore={bookStore}/>:
+          bookStore.pagesStored? <PagesView bookStore={bookStore} userStore={userStore} book_id={bookStore.bookCreatedId}/>:
          <Switch>
           <Route exact path='/menu/'
                  render= { props => <SideMenu {...props} userStore={userStore} bookStore={bookStore}/> }

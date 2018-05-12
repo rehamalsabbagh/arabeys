@@ -8,7 +8,7 @@ export default observer (class Loader extends Component {
   render() {
       return (
       <Container style={{justifyContent:'center', alignItems:'center'}}>
-          <Thumbnail square small source={{uri:'https://ambion.am/webpage/img/loaders.gif'}} style={{height: 90, width:90, marginTop:80}}/>
+          <Thumbnail square small source={{uri:'https://ambion.am/webpage/img/loaders.gif'}} style={{height: 90, width:90}}/>
       </Container>
     );
   }

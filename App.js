@@ -6,12 +6,6 @@ import { Font } from 'expo';
 
 export default class App extends React.Component {
 
-  componentDidMount() {
-    Font.loadAsync({
-      'open-sans-bold': require('./assets/fonts/zahra.ttf'),
-    });
-  }
-
   render() {
     return (
         <NativeRouter>

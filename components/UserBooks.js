@@ -26,7 +26,7 @@ export default observer (class BookList extends Component {
     return (
 
         <Container>
-        <MyHeader/>
+        <MyHeader bookStore={this.props.bookStore}/>
         <Container style={{padding:15}}>
           <List dataArray={books}
             renderRow={(item) =>

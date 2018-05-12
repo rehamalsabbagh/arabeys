@@ -21,7 +21,7 @@ export default observer (class PagesView extends Component {
 
     return (
         <Container>
-        <MyHeader/>
+        <MyHeader bookStore={this.props.bookStore}/>
         <Container style={{padding:15}}>
         <Text style={{'textAlign':'center','padding':10,'fontSize':25}}>{this.props.bookStore.currentBook} <Icon name='book' style={{textAlign: 'center'}}/></Text>
           <List dataArray={pages}

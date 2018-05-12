@@ -28,7 +28,9 @@
     "react": "16.3.1",
     "react-native": "~0.55.2",
     "react-native-camera": "https://github.com/react-native-community/react-native-camera.git",
+    "react-native-cards-slider": "^0.1.2",
     "react-native-git-upgrade": "^0.2.7",
+    "react-native-grid-list": "^1.0.8",
     "react-router-native": "^4.2.0"
   }
 }

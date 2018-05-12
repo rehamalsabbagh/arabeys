@@ -55,7 +55,6 @@ class BookStore{
 
     sendPage(book_id,base64){
     	this.loading = true;
-    	this.pagesStored = false;
 	    return axios.post(
 	      `http://139.59.208.148/api/page_create/`,
 	      { book: book_id ,base64: base64, page_image:null, page_text:'.'},
@@ -67,9 +66,9 @@ class BookStore{
 	      	if (this.pagesProcessed == this.base64Pages.length){
 	      		//this.getPagesOfBook(book_id);
 	      		this.pagesProcessed = 0;
-	      		this.loading = false;
 	      		this.bookCreatedId = book_id;
 	      		this.pagesStored = true;
+	      		this.loading = false;
 	      	}
 	      })
 	      .catch(err => console.error('there is an error in the create page api: '+err));
@@ -87,6 +86,7 @@ class BookStore{
 			})
 			.catch(err => console.error(err));
 		}
+
 
 	getBooksForUser(currentUsername){
 		return this.books.filter(book=> book.user.username == currentUsername);
